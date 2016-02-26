@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>uk.ac.gla.terrier</groupId>
+  <artifactId>probos-csd</artifactId>
+  <version>0.2.10</version>
+  <name>ProBoS CSD</name>
+  <packaging>pom</packaging>
+
+   <pluginRepositories>
+    <pluginRepository>
+      <id>cloudera-repos</id>
+      <name>Cloudera Repos</name>
+      <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+    </pluginRepository>
+    
+  </pluginRepositories>
+
+  <build>
+  <plugins>
+   <!-- Assemble the CSD. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+         <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+           </execution>
+         </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.cloudera.enterprise</groupId>
+        <artifactId>schema-validator-maven-plugin</artifactId>
+        <version>5.5.3</version>
+        <executions>
+          <execution>
+            <id>validate-descriptors</id>
+            <phase>test</phase>
+            <goals>
+              <goal>validate</goal>
+            </goals>
+            <configuration>
+              <!-- The directory containing pom.xml. The plugin will recurse
+                   and find both the SDL and MDL from here.
+                   TODO: when the SDL becomes generated, this can probably be
+                   narrowed to just the build directory. -->
+              <sourceDirectory>${project.basedir}</sourceDirectory>
+              <!-- Will flag any JSON element that is unrecognized by the
+                   CSD framework. -->
+              <strictMode>true</strictMode>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
