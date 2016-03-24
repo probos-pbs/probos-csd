@@ -199,7 +199,7 @@
 		   },
 		   {
 		    "name" : "hadoop_probos_allowed_groups",
-		    "label" : "Controller host",
+		    "label" : "Controller-accessible groups",
 		    "description" : "The name of groups that the ProBoS controller server daemon may impersonate",
 		    "required" : "true",
 		    "configName" : "hadoop.proxyuser.probos.groups",
@@ -226,6 +226,7 @@
 	           "configFormat" : "hadoop_xml",
 	           "includedParams" : [
 	           		"port_num",
+	           		"controller_job_dir",
 	           		"controller_host", 
 	           		"controller_keytab",
 	           		"hadoop_probos_allowed_hosts",
