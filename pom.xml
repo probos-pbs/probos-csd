@@ -1,11 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
-  <groupId>uk.ac.gla.terrier</groupId>
+ <groupId>uk.ac.gla.terrier</groupId>
   <artifactId>probos-csd</artifactId>
-  <version>0.2.10</version>
   <name>ProBoS CSD</name>
+  <version>0.2.10-SNAPSHOT</version>
   <packaging>pom</packaging>
 
    <pluginRepositories>
@@ -25,6 +24,7 @@
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
           <appendAssemblyId>false</appendAssemblyId>
+           <finalName>ProBoS-${project.version}</finalName>
           <descriptors>
             <descriptor>assembly.xml</descriptor>
           </descriptors>
