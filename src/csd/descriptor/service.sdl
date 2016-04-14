@@ -1,8 +1,8 @@
 {
   "name" : "PROBOS",
   "label" : "ProBoS",
-  "description" : "An implementation of the PBS batch system using Hadoop YARN. This will install ProBoS with CSD version 0.2.9",
-  "version" : "0.2.9-SNAPSHOT",
+  "description" : "An implementation of the PBS batch system using Hadoop YARN. This will install ProBoS with CSD version 0.2.11",
+  "version" : "0.2.11-SNAPSHOT",
   "icon" : "images/icon.png",
   "runAs" : { 
     "user" : "probos",
@@ -64,6 +64,17 @@
     "type" : "port",
     "default" : 8027
    },
+   
+	{
+	    "name" : "shared_paths",
+	    "label" : "Shared paths",
+	    "description" : "What OS filesystem paths are shared between nodes? (comma delimited list)",
+	    "required" : "true",
+	    "configName" : "probos.rcp.use",
+	    "type" : "string",
+	    "default" : "/users,/local"
+   },
+   
 	{
 	    "name" : "controller_job_dir",
 	    "label" : "Controller job directory",
